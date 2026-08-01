@@ -85,6 +85,7 @@ section{padding:84px 0}
 .award .org{color:var(--muted);font-size:.88rem;margin-bottom:10px}
 .award p{color:#4a4a45;font-size:.94rem;max-width:700px}
 .award .medal{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--gold);background:var(--gold-soft);border-radius:99px;padding:3px 12px;margin-left:10px;vertical-align:2px}
+.award .cert{margin-top:14px;height:150px;width:auto;border:1px solid var(--line);border-radius:8px;cursor:zoom-in;box-shadow:0 8px 20px rgba(28,28,26,.06)}
 
 /* Experience */
 .exp{border-top:1px solid var(--line)}
@@ -291,6 +292,7 @@ footer{padding:36px 0 44px;text-align:center;color:var(--faint);font-size:.83rem
             맞춤형 정책을 추천하는 공공서비스 '청년야호'와 행정 관점의 분석·시각화 웹 대시보드
             'Y-SAFE'를 구현했습니다.
           </p>
+          <img class="cert" src="award-ai-special.jpg" alt="AI 특별상 상장 — DIVE 2026, 재단법인 부산테크노파크">
         </div>
       </div>
       <div class="award">
@@ -303,6 +305,7 @@ footer{padding:36px 0 44px;text-align:center;color:var(--faint);font-size:.83rem
             '청년야호'와 행정용 웹 대시보드 'Y-SAFE'를 구현. 데이터 활용성, 서비스 구성 및
             과제 해결 완성도를 인정받아 해당 발제 부문 3등상을 수상했습니다.
           </p>
+          <img class="cert" src="award-3rd-place.jpg" alt="부산광역시 X KCB 트랙 3등상 상장 — DIVE 2026, 재단법인 부산테크노파크">
         </div>
       </div>
     </div>
@@ -437,6 +440,11 @@ footer{padding:36px 0 44px;text-align:center;color:var(--faint);font-size:.83rem
             <img src="ysafe-features.jpg" alt="피처 엔지니어링 — 42개 컬럼을 위기 신호로 변환" loading="lazy">
             <img src="ysafe-spatial.jpg" alt="공간분석 — 위험의 공간 무상관성 검증" loading="lazy">
             <img src="ysafe-jeonse.jpg" alt="역전세 위험 분석 — 사상구 포착" loading="lazy">
+          </div>
+          <h5>모델 선택 — BIC vs Silhouette</h5>
+          <p>GMM의 K(클러스터 수)와 공분산 구조(full/diag) 16개 조합을 비교한 결과, <b>BIC는 K=9(diag)를 최적으로 지목</b>했지만 <b>Silhouette 점수는 K=3에서 가장 높았습니다</b>. 두 지표가 다른 답을 가리키는 상황에서, 해석 가능한 유형 분류가 목적임을 고려해 BIC 기준을 채택했습니다. AI 코딩 도구(Claude Code)로 파이프라인을 구현하되, 지표 선택 기준과 트레이드오프 판단은 직접 검토했습니다.</p>
+          <div class="xd-shots">
+            <img src="ysafe-bic-chart.png" alt="GMM 모델 선택 — BIC와 Silhouette 지표 비교, K=9 vs K=3" loading="lazy">
           </div>
           <h5>한계와 로드맵</h5>
           <p>위험점수는 단일 시점 프록시 점수임을 전제로 명시했고, 패널데이터 확보 시 <b>Cox 생존분석으로 교체되도록 코드를 미리 구현</b>해 두었습니다.</p>
@@ -695,7 +703,7 @@ footer{padding:36px 0 44px;text-align:center;color:var(--faint);font-size:.83rem
 (function(){
   var lb = document.getElementById('lb');
   var lbImg = document.getElementById('lb-img');
-  document.querySelectorAll('.shots img, .xd-shots img, .other-card .thumb, .qr-card img').forEach(function(img){
+  document.querySelectorAll('.shots img, .xd-shots img, .other-card .thumb, .qr-card img, .award .cert').forEach(function(img){
     img.addEventListener('click', function(){
       lbImg.src = img.src;
       lbImg.alt = img.alt || '확대 이미지';
